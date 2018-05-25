@@ -1,25 +1,25 @@
 # Rangkuman TBA
-#### opensourced github.com/satraul/rangkuman\-tba.git
+#### opensourced github.com/satraul/rangkuman-tba.git
 
 ## PDA
 ### Definisi
 Push Down Automata (PDA) adalah Finite State Machine yang dilengkapi dengan sebuah unlimited stack. 
 PDA M adalah tupel K (states), Σ (input), Γ (stack), ∆ (transisi), s (start), A (accept). Notasi ∆:
-(img)
+![](DraggedImage.png)
 ### Komputasi
 - Jika C adalah komputasi yang dilakukan oleh M pada input w ∈ Σ\*
 	- C: accepting computation iff C = (s, w, ε)├M\* (q, ε, ε) untuk suatu q ∈ A
 	- C: rejecting computation iff C = (s, w, ε)├M\* (q, w’, ⍺) di mana C bukan accepting computation dan tidak ada move yang mungkin dari (q,w’, ⍺), dengan kata lain konfigurasi halt.
 - M menerima (accept) w iff paling tidak satu komputasi menerimanya. M menolak (reject) w iff semua komputasi menolaknya.
 - Bahasa yang diterima oleh M, notasi L(M), adalah himpunan semua string w yang diterima oleh M
-### Grammar -> PDA
+### Grammar -\> PDA
 Diberikan suatu CFG G = (V, Σ, R, S), terdapat sebuah PDA M sehingga L(M) = L(G)
 #### Topdown
 Mulai dari S, menerapkan sejumlah rule R, dan memeriksa apakah ada derivasi dari G ke w
-(img)
+![](DraggedImage-1.png)
 #### Bottom-up
 Mulai dari w, menerapkan sejumlah rule R backward, dan memeriksa apakah S dicapai
-(img)
+![](DraggedImage-2.png)
 ## CFL
 ### Detriministik CFL
 - Sementara Bahasa Reguler memiliki sifat closure pada operasi komplemen, irisan dan difference,
@@ -28,7 +28,7 @@ Mulai dari w, menerapkan sejumlah rule R backward, dan memeriksa apakah S dicapa
 	- ΔM tidak memiliki lebih dari satu pilihan transisi dari setiap konfigurasi.
 	- Jika q accepting state dalam M, maka tidak ada transisi (q, ε, ε), (p, a)).
 - Bahasa L adalah CFL deterministik iff L$ dapat diterima oleh PDA deterministik.
-	- L$ = \{w$ : w ∈ L, dan $ adalah simbol end-of-string}
+	- L$ = {w$ : w ∈ L, dan $ adalah simbol end-of-string}
 ### Teorema Pumping untuk CFL
 wkwkkw
 ### Sifat Closure CFL
@@ -38,7 +38,7 @@ wkwkkw
 	- Tetapi CFL closure dalam operasi irisan/different dengan bahasa reguler 
 ### Ogden’s Lemma
 Untuk buktiin bahwa L adalah context-free
-(img)
+![](DraggedImage-3.png)
 ## Turing Machine
 ### Definisi
 - Bayangkan suatu FSM yang dilengkapi storage berbentuk tape 
@@ -59,8 +59,8 @@ Untuk buktiin bahwa L adalah context-free
 	- Tidak dapat mencapai halt maupun crash.
 	- Karena kesalahan logika dalam pendefinisian transisi atau karena nature of its related problem sendiri (tidak ada mesin ekivalen yang bisa halt/crash)
 ### Notasi Makro
-(img)
-(img)
+![](DraggedImage-4.png)
+![](DraggedImage-5.png)
 ### Varian-varian
 - Mesin Turing Multitape
 	- Perbedaannya:
@@ -68,15 +68,15 @@ Untuk buktiin bahwa L adalah context-free
 		- masing-masing memiliki satu head sendiri,
 		- konfigurasi mesin terdiri atas status current, isi dari tape-tape tsb, dan posisi head setiap tape
 		- Transisi merupakan fungsi 
-			- ((K-H) ⨯ Γ1 ⨯ … ⨯ Γk) -> (K ⨯ Γ1 ⨯ \{->,<-, ↑} ⨯ ... ⨯ Γk ⨯ \{->,<-, ↑}
+			- ((K-H) ⨯ Γ1 ⨯ … ⨯ Γk) -\> (K ⨯ Γ1 ⨯ {-\>,\<-, ↑} ⨯ ... ⨯ Γk ⨯ {-\>,\<-, ↑}
 			- ↑ (atau S) artinya tetap
 	- Manfaat: S sebagai tempat sementara, contoh: operasi duplikasi string 
 - NDTM
 - Mesin Turing One-way
 ### Mesin Turing Universal (UTM)
-(img)
+![](DraggedImage-6.png)
 DansGame Explain?
-(img)
+![](DraggedImage-7.png)
 ## D&SD
 ### Decidable
 - Suatu bahasa dikatakan Decidable (D) jika ada mesin Turing yang selalu dapat menerima setiap string dari bahasa itu dan selalu dapat menolak setiap string yang bukan dari bahasa tersebut.
@@ -100,16 +100,16 @@ DansGame Explain?
 - Jika L adalah D, maka L dan ￢L adalah SD. Bukti: L adalah D, maka ￢L adalah D. Karena keduanya adalah D maka keduanya adalah juga SD.
 
 ### Non-halting Problem (￢H)
-- Jika H adalah \{<M,w>: Mesin Turing M halt pada string input w} maka ￢H adalah \{<M,w>: Mesin Turing M tidak halt pada string input w.}
-- Jika UTM menjalankan <M,w> ∈ ￢H, maka mesin bisa jadi infinite loop (“tanpa berakhir dengan memberikan keputusan”). Maka ￢H bukan SD karena tidak memenuhi definisi mengenai bahasa-bahasa SD.
+- Jika H adalah {\<M,w\>: Mesin Turing M halt pada string input w} maka ￢H adalah {\<M,w\>: Mesin Turing M tidak halt pada string input w.}
+- Jika UTM menjalankan \<M,w\> ∈ ￢H, maka mesin bisa jadi infinite loop (“tanpa berakhir dengan memberikan keputusan”). Maka ￢H bukan SD karena tidak memenuhi definisi mengenai bahasa-bahasa SD.
 ### Mesin Enumerator
 - Mesin Enumerator L adalah mesin Turing yang dapat menghasilkan output berupa enumerasi secara string-string dari bahasa L.
 - Secara umum enumerasi tidak harus secara proper-order, bisa juga secara sembarang/acak.
 - Mesin Turing enumerator dapat didefinisikan dengan adanya notasi makro P untuk “mengirimkan/mencetak” isi tape yang telah berisi string.
-(img)
+![](DraggedImage-8.png)
 - Jika L finite maka mesin suatu saat harus halt, jika L infinite maka M akan beriterasi tanpa pernah halt karena terus-menerus akan berkomputasi menghasilkan string berikutnya.
 ### String Generator
-- Mesin enumerator Σ\* dapat digunakan sebagai string generator Σ\* (SG Σ\*) untuk enumerator bahasa-bahasa lain. Misalnya: String Enumerator WW = \{ww : w ∈ Σ\*}
+- Mesin enumerator Σ\* dapat digunakan sebagai string generator Σ\* (SG Σ\*) untuk enumerator bahasa-bahasa lain. Misalnya: String Enumerator WW = {ww : w ∈ Σ\*}
 - Enumerator M untuk WW bekerja sbb.
 	1. Mesin M memanggil SG Σ\*
 	2. setiap saat P dijalankan oleh SG, string yang dihasilkan dalam tape diperiksa oleh TM Mww (mesin yang mengenali WW), saat Mww halt di hy maka M menjalankan P.
@@ -118,11 +118,11 @@ DansGame Explain?
 - Untuk menghindarkan M terjebak dalam infinite loop saat memeriksa suatu string w ∈ L.
 - Enumerator menerapkan stepping counter dalam pada komputasi ML dengan satu step adalah satu transisi dalam ML.
 - Selain itu beberapa instant ML dijalankan sekaligus untuk memeriksa sejumlah string. Jika SG menghasilkan w1, w2, w3, … pada step pertama komputasi untuk w1, pada step kedua komputasi untuk w1, dan w2 (jika untuk w1 belum halt/crash), step ketiga untuk w1, w2, w3 (jika untuk w1 dan w2 belum halt/crash), dan seterusnya.
-- Contoh: SG \{a,b}\* menghasilkan ε, a, b, aa, ab, ba, bb, dst ... maka dovetailing menyebabkan komputasi paralel sebagai berikut.
+- Contoh: SG {a,b}\* menghasilkan ε, a, b, aa, ab, ba, bb, dst ... maka dovetailing menyebabkan komputasi paralel sebagai berikut.
 - Dapat disimpulkan:
 	- Bahasa L disebut turing enumerable jika dapat dienumerasikan (baik secara proper-order maupun acak)
 	- Bahasa L disebut turing enumerable secara proper-order jika dapat dienumerasikan secara proper-order
 	- Suatu bahasa L adalah SD iff L turing enumerable.
 	- Suatu bahasa L adalah D iff L turing enumerabel secara proper-order
-### Metode reduksi -> mapping reduction
+### Metode reduksi -\> mapping reduction
 sumpah w gatau
